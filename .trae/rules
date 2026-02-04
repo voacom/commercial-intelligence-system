@@ -1,0 +1,56 @@
+# Project Configuration & Rules
+
+> **CONTEXT ALERT**: See [.trae/context.md](file:///.trae/context.md) for strict Data Alignment Rules.
+> All API calls must reference `frontend/src/shared/api-schema.ts`.
+
+## Tech Stack
+- **Frontend**: React 19, TypeScript, Vite, Tailwind CSS v4, Lucide React, React Router DOM.
+- **Backend**: Python 3.12+, FastAPI, Supabase (PostgreSQL), Pydantic.
+- **Database**: Supabase (Cloud PostgreSQL).
+- **Package Manager**: npm (Frontend), pip/venv (Backend).
+
+## Coding Guidelines
+
+### Context & Consistency (STRICT)
+- **API Schema**: All data models MUST align with `frontend/src/shared/api-schema.ts`.
+- **Database**: DB columns must match the schema properties defined in the shared file.
+- **Verification**: When writing backend code, verify against the shared TS interface.
+
+### Frontend (React + TypeScript)
+- **Component Style**: Use Functional Components with Hooks.
+- **Typing**: Use strict TypeScript interfaces/types. Avoid `any`.
+- **Styling**: Use Tailwind CSS utility classes. 
+  - Follow the "High Contrast Dark Mode" preference: Backgrounds should be deep dark, text/headers bright light gray (#F0F2F6) for readability.
+- **State Management**: Use React Context for global state (e.g., AuthContext).
+- **Icons**: Use `lucide-react` for icons.
+- **File Structure**:
+  - `src/components`: Reusable UI components.
+  - `src/pages`: Page-level components.
+  - `src/context`: React Context definitions.
+  - `src/hooks`: Custom hooks.
+  - `src/services`: API service calls (axios/fetch wrappers).
+
+### Backend (FastAPI + Python)
+- **Type Hinting**: All function arguments and return values must be type-hinted.
+- **Models**: Use Pydantic models (`BaseModel`) for all schemas (Requests/Responses).
+- **Database**: Use `supabase-py` client.
+  - Keep SQL queries or Supabase table operations in the service/controller layer, not directly in routes if possible.
+  - Use environment variables (`SUPABASE_URL`, `SUPABASE_KEY`) for connection.
+- **Async**: Use `async def` for route handlers and DB operations.
+- **Security**: 
+  - Never commit API keys.
+  - Use `Depends` for dependency injection (e.g., current user).
+
+## Project Structure
+- `/frontend`: React application.
+- `/backend`: FastAPI application.
+- `/supabase`: SQL migrations and DB config.
+
+## Development Workflow
+- **Frontend**: `cd frontend && npm run dev` (Runs on port 5173).
+- **Backend**: `cd backend && python main.py` (Runs on port 8000).
+- **Task Management**: ALWAYS use `TodoWrite` to track complex tasks.
+
+## User Preferences
+- **UI Theme**: High Contrast Dark Mode.
+- **Language**: User communicates in Chinese/English. Code comments in English or Chinese (consistent with context).

@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  body {
+    /* @apply bg-background text-text font-sans antialiased; */
+    @apply bg-white text-black font-sans antialiased;
+  }
+}
+
+/* Custom Component Classes from Design System */
+@layer components {
+  .btn-primary {
+    @apply bg-cta text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:opacity-90 hover:-translate-y-px cursor-pointer shadow-md;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent text-primary border-2 border-primary px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:shadow-md cursor-pointer;
+  }
+
+  .card {
+    @apply bg-white rounded-xl p-6 shadow-md transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 cursor-pointer border border-slate-100;
+  }
+}
