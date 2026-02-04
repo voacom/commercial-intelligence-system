@@ -4,6 +4,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from datetime import timedelta
 from typing import Annotated
 from pydantic import BaseModel
+import sys
+import os
+
+# Add current directory to sys.path to allow imports from local files on Vercel
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from models import User, UserInDB, Token, LoginRequest, DesignProject, CreateProjectRequest, UpdateProjectRequest
 from auth import get_password_hash, verify_password, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES
